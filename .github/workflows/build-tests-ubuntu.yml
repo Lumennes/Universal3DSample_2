@@ -48,7 +48,7 @@ jobs:
         # projectPath:
           # - test-project
         unityVersion:
-          - 2022.3.43f1
+          #- 2022.3.43f1
           - 2022.3.42f1
           # - 2022.3.41f1
           # - 2022.3.40f1
