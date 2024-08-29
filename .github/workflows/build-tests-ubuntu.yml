@@ -103,8 +103,9 @@ jobs:
       - name: Clear Space for Android Build
         if: matrix.targetPlatform == 'Android'
         uses: jlumbroso/free-disk-space@main
-        tool-cache: false
-        android: false
+        with:
+          tool-cache: false
+          android: false
 
       ###########################
       #         Checkout        #
