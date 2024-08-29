@@ -61,8 +61,8 @@ jobs:
           - StandaloneWindows64 # Build a Windows 64-bit standalone with mono backend.
           # - StandaloneLinux64 # Build a Linux 64-bit standalone with mono/il2cpp backend.
           # - iOS # Build an iOS project.
-          - Android # Build an Android .apk.
-          - WebGL # WebGL.
+          # - Android # Build an Android .apk.
+          # - WebGL # WebGL.
         # buildWithIl2cpp:
           # - false
           # - true
@@ -198,18 +198,18 @@ jobs:
       ###########################
       #          Upload         #
       ###########################
-      - uses: actions/upload-artifact@v4
-        with:
-          name:
-            'Build ${{ matrix.targetPlatform }} on Ubuntu (${{ matrix.unityVersion }}'
+      # - uses: actions/upload-artifact@v4
+        # with:
+          # name:
+            # 'Build ${{ matrix.targetPlatform }} on Ubuntu (${{ matrix.unityVersion }}'
             # _il2cpp_${{ matrix.buildWithIl2cpp
             # }}_params_${{ matrix.additionalParameters }})'
-          path: build
-          retention-days: 14
+          # path: build
+          # retention-days: 14
           
-      # - uses: Difegue/action-megacmd@master
-        # with:
-          # args: put -c build /${{ env.PROJECT_NAME }}/${{ matrix.unityVersion }}/ 
-        # env:
-          # USERNAME: ${{ secrets.MEGA_USERNAME }}
-          # PASSWORD: ${{ secrets.MEGA_PASSWORD }}
+      - uses: Difegue/action-megacmd@master
+        with:
+          args: put -c /build/${{ matrix.targetPlatform }} /${{ env.PROJECT_NAME }}/${{ matrix.unityVersion }}/ 
+        env:
+          USERNAME: ${{ secrets.MEGA_USERNAME }}
+          PASSWORD: ${{ secrets.MEGA_PASSWORD }}
