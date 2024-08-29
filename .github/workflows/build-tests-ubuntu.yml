@@ -42,14 +42,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #providerStrategy:
+        providerStrategy:
           # - local-docker
-          #- local
+          - local
         # projectPath:
           # - test-project
         unityVersion:
           #- 2022.3.43f1
           - 2022.3.42f1
+          - 2022.3.43f1
+          - 2022.3.44f1
           # - 2022.3.41f1
           # - 2022.3.40f1
           # - 2022.3.39f1
@@ -98,9 +100,9 @@ jobs:
 
     steps:      
 
-      # - name: Clear Space for Android Build
-        # if: matrix.targetPlatform == 'Android'
-        # uses: jlumbroso/free-disk-space@v1.3.1
+      - name: Clear Space for Android Build
+        if: matrix.targetPlatform == 'Android'
+        uses: jlumbroso/free-disk-space@v1.3.1
 
       ###########################
       #         Checkout        #
@@ -145,7 +147,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           # buildMethod: UnityBuilderAction.BuildScript.Build
           # customParameters: -profile SomeProfile -someBoolean -someValue exampleValue ${{ matrix.additionalParameters }}
-          # providerStrategy: ${{ matrix.providerStrategy }}
+          providerStrategy: ${{ matrix.providerStrategy }}
           allowDirtyBuild: true
 
       - name: Sleep for Retry
@@ -168,7 +170,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           # buildMethod: UnityBuilderAction.BuildScript.Build
           # customParameters: -profile SomeProfile -someBoolean -someValue exampleValue ${{ matrix.additionalParameters }}
-          # providerStrategy: ${{ matrix.providerStrategy }}
+          providerStrategy: ${{ matrix.providerStrategy }}
           allowDirtyBuild: true
 
       - name: Sleep for Retry
@@ -190,7 +192,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           # buildMethod: UnityBuilderAction.BuildScript.Build
           # customParameters: -profile SomeProfile -someBoolean -someValue exampleValue ${{ matrix.additionalParameters }}
-          # providerStrategy: ${{ matrix.providerStrategy }}
+          providerStrategy: ${{ matrix.providerStrategy }}
           allowDirtyBuild: true
 
       ###########################
