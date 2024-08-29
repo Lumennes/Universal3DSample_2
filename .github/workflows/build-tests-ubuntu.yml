@@ -50,8 +50,8 @@ jobs:
         unityVersion:
           #- 2022.3.43f1
           - 2022.3.42f1
-          - 2022.3.43f1
-          - 2022.3.44f1
+          # - 2022.3.43f1
+          # - 2022.3.44f1
           # - 2022.3.41f1
           # - 2022.3.40f1
           # - 2022.3.39f1
@@ -61,8 +61,8 @@ jobs:
           - StandaloneWindows64 # Build a Windows 64-bit standalone with mono backend.
           # - StandaloneLinux64 # Build a Linux 64-bit standalone with mono/il2cpp backend.
           # - iOS # Build an iOS project.
-          # - Android # Build an Android .apk.
-          # - WebGL # WebGL.
+           - Android # Build an Android .apk.
+           - WebGL # WebGL.
         # buildWithIl2cpp:
           # - false
           # - true
@@ -209,7 +209,7 @@ jobs:
           
       - uses: Difegue/action-megacmd@master
         with:
-          args: put -c /build/${{ matrix.targetPlatform }} /${{ env.PROJECT_NAME }}/${{ matrix.unityVersion }}/ 
+          args: put -c build/${{ matrix.targetPlatform }}/ /${{ env.PROJECT_NAME }}/${{ matrix.unityVersion }}/ 
         env:
           USERNAME: ${{ secrets.MEGA_USERNAME }}
           PASSWORD: ${{ secrets.MEGA_PASSWORD }}
