@@ -193,7 +193,7 @@ namespace UnityBuilderAction
 //                targetGroup = BuildPipeline.GetBuildTargetGroup(buildTarget),
                 locationPathName = filePath,
                 //                options = UnityEditor.BuildOptions.Development
-#if !UNITY_WEBGL
+#if UNITY_ANDROID || UNITY_STANDALONE_WIN
                 options = BuildOptions.CompressWithLz4HC,
 #endif
 #if UNITY_2021_2_OR_NEWER
